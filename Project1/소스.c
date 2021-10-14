@@ -590,92 +590,132 @@
 //
 //
 //}
+//#include <stdio.h>
+//#pragma warning(disable:4996)
+//
+//
+//int main() {
+//	int num1[100]   ,num2[100] ;
+//	int number1, number2;
+//	int gcd = 0;
+//	int arrcount1=-1,arrcount2=-1;
+//
+//	scanf_s("%d", &number1);
+//	scanf_s("%d", &number2);
+//	while (gcd <99)
+//	{
+//		gcd++;
+//		num1[gcd] = 0;
+//		num2[gcd] = 0;
+//		
+//	}
+//	gcd = 0;
+//	for (int  i = 1; i <= number1; i++)
+//	{
+//		
+//			if (number1 % i == 0)
+//			{
+//				arrcount1++;
+//				num1[arrcount1] = i;
+//				
+//			}
+//		
+//	
+//	}
+//	//int c=0;
+//	//while (num1[c] !=0)
+//	//{
+//	//	printf("%d\n", num1[c]);
+//	//	c++;
+//	//}
+//	for (int j = 1; j <= number2; j++)
+//	{
+//
+//		if (number2 % j == 0)
+//		{
+//			arrcount2++;
+//			num2[arrcount2] = j;
+//			
+//		}
+//
+//
+//	}
+//	//c = 0;
+//	//while (num2[c] != 0)
+//	//{
+//	//	printf("%d\n", num2[c]);
+//	//	c++;
+//	//}
+//	
+//	while (gcd==0)
+//	{
+//		printf("%d %d\n", num1[arrcount1], num2[arrcount2]);
+//		if (num1[arrcount1] > num2[arrcount2])
+//		{
+//			
+//			arrcount1--;
+//			
+//		}
+//		else if (num1[arrcount1] < num2[arrcount2])
+//		{
+//
+//			arrcount2--;
+//			
+//		}
+//		else
+//		{
+//			gcd = 1;
+//			break;
+//		}
+//	}
+//	if (gcd == 1)
+//	{
+//		printf("최대공약수 %d", num1[arrcount1]);
+//	}
+//	
+//
+//
+//
+//
+//	return 0;
+//}
 #include <stdio.h>
-#pragma warning(disable:4996)
-
+#include <math.h>
 
 int main() {
-	int num1[100]   ,num2[100] ;
-	int number1, number2;
-	int gcd = 0;
-	int arrcount1=-1,arrcount2=-1;
+	int N, i, count, k=0, m=0, n=0, flag = 0;
+	int number[100] = {2};
+	
+	scanf_s("%d", &N);
 
-	scanf_s("%d", &number1);
-	scanf_s("%d", &number2);
-	while (gcd <99)
-	{
-		gcd++;
-		num1[gcd] = 0;
-		num2[gcd] = 0;
-		
-	}
-	gcd = 0;
-	for (int  i = 1; i <= number1; i++)
-	{
-		
-			if (number1 % i == 0)
-			{
-				arrcount1++;
-				num1[arrcount1] = i;
-				
+	if (N >= 2)printf("2\n");
+	for (i = 3;  i<= N; i+=2) {
+		count = 0;
+		while (number[k] <= sqrt((float)(i)) && number[k] != 0)
+		{
+			if (i % number[k] == 0) { 
+				count++;
+				break;
+
 			}
+
+			k++;
+			
+		}
+			
+			
 		
-	
-	}
-	//int c=0;
-	//while (num1[c] !=0)
-	//{
-	//	printf("%d\n", num1[c]);
-	//	c++;
-	//}
-	for (int j = 1; j <= number2; j++)
-	{
+		if (count == 0) {
+			m++;
+			printf("%d\n", i);
+			number[m] = i;
+			m = m+ 1;
+			number[m] =  0 ;
+			m--;
 
-		if (number2 % j == 0)
-		{
-			arrcount2++;
-			num2[arrcount2] = j;
-			
+
+
 		}
-
-
+		flag = 0;
 	}
-	//c = 0;
-	//while (num2[c] != 0)
-	//{
-	//	printf("%d\n", num2[c]);
-	//	c++;
-	//}
-	
-	while (gcd==0)
-	{
-		printf("%d %d\n", num1[arrcount1], num2[arrcount2]);
-		if (num1[arrcount1] > num2[arrcount2])
-		{
-			
-			arrcount1--;
-			
-		}
-		else if (num1[arrcount1] < num2[arrcount2])
-		{
-
-			arrcount2--;
-			
-		}
-		else
-		{
-			gcd = 1;
-			break;
-		}
-	}
-	if (gcd == 1)
-	{
-		printf("최대공약수 %d", num1[arrcount1]);
-	}
-	
-
-
-
-
-	return 0;
 }
