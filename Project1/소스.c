@@ -1,5 +1,7 @@
 //#include <stdio.h>
 //#include <stdlib.h>
+//#pragma warning(suppress : 4996)
+//#define _CRT_SECURE_NO_WARNINGS
 //
 //#define MAX_SIZE 100
 //#define MAZE_SIZE 10
@@ -520,71 +522,160 @@
 //}
 
 
-#include<stdio.h>
-#include<math.h>
-#pragma warning(disable:4996)
+//#include<stdio.h>
+//#include<math.h>
+//#pragma warning(disable:4996)
 //알고리즘 5번 우리는 소수를 구할때 굳이 그수까지 나눠보지 않아도 된다 그수의 루트값이 나뉘어진다는것은 그수도 나누어 떨어진다는 뜻이다.
 //거기서 더 추가하여 우리 소수를 구한값을 통하여 나누어서 나누어떨어진다면 소수라는 하나의 조건을 더추가하였다 이 알고리즘은 
+//int main() {
+//
+//	int ar[1000] = { 0,0,0,0,0,0 };
+//	int i, count = 0, k, num, numbercount = 0, ccount, j;
+//	scanf_s("%d", &num);
+//	j = 0;
+//	ar[0] = 2;
+//	k = 0;
+//	for (i = 3; i <= num; i += 2)
+//	{
+//		j = 0;
+//		ccount = 0;
+//		while (ar[j] <= sqrt((float)i) && ar[j] != 0)
+//		{
+//			numbercount++;
+//			if (i % ar[j] == 0)
+//			{
+//				ccount++;
+//				break;
+//			}
+//			if (ar[j] == 2)
+//			{
+//				numbercount--;
+//			}
+//			j++;
+//		}
+//
+//
+//
+//
+//
+//		if (ccount == 0)
+//		{
+//			k++;
+//			ar[k] = i;
+//			k = k + 1;
+//			ar[k] = 0;
+//			k--;
+//
+//		}
+//
+//
+//
+//	}
+//	int c = 0;
+//
+//	while (ar[c] != 0)
+//	{
+//		printf("%d\n", ar[c]);
+//		c++;
+//	}
+//	printf("계산 돌린 횟수 : % d", numbercount);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//}
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+
 int main() {
+	int num1[100]   ,num2[100] ;
+	int number1, number2;
+	int gcd = 0;
+	int arrcount1=-1,arrcount2=-1;
 
-	int ar[1000] = { 0,0,0,0,0,0 };
-	int i, count = 0, k, num, numbercount = 0, ccount, j;
-	scanf_s("%d", &num);
-	j = 0;
-	ar[0] = 2;
-	k = 0;
-	for (i = 3; i <= num; i += 2)
+	scanf_s("%d", &number1);
+	scanf_s("%d", &number2);
+	while (gcd <99)
 	{
-		j = 0;
-		ccount = 0;
-		while (ar[j] <= sqrt((float)i) && ar[j] != 0)
+		gcd++;
+		num1[gcd] = 0;
+		num2[gcd] = 0;
+		
+	}
+	gcd = 0;
+	for (int  i = 1; i <= number1; i++)
+	{
+		
+			if (number1 % i == 0)
+			{
+				arrcount1++;
+				num1[arrcount1] = i;
+				
+			}
+		
+	
+	}
+	//int c=0;
+	//while (num1[c] !=0)
+	//{
+	//	printf("%d\n", num1[c]);
+	//	c++;
+	//}
+	for (int j = 1; j <= number2; j++)
+	{
+
+		if (number2 % j == 0)
 		{
-			numbercount++;
-			if (i % ar[j] == 0)
-			{
-				ccount++;
-				break;
-			}
-			if (ar[j] == 2)
-			{
-				numbercount--;
-			}
-			j++;
+			arrcount2++;
+			num2[arrcount2] = j;
+			
 		}
 
 
-
-
-
-		if (ccount == 0)
-		{
-			k++;
-			ar[k] = i;
-			k = k + 1;
-			ar[k] = 0;
-			k--;
-
-		}
-
-
-
 	}
-	int c = 0;
-
-	while (ar[c] != 0)
+	//c = 0;
+	//while (num2[c] != 0)
+	//{
+	//	printf("%d\n", num2[c]);
+	//	c++;
+	//}
+	
+	while (gcd==0)
 	{
-		printf("%d\n", ar[c]);
-		c++;
+		printf("%d %d\n", num1[arrcount1], num2[arrcount2]);
+		if (num1[arrcount1] > num2[arrcount2])
+		{
+			
+			arrcount1--;
+			
+		}
+		else if (num1[arrcount1] < num2[arrcount2])
+		{
+
+			arrcount2--;
+			
+		}
+		else
+		{
+			gcd = 1;
+			break;
+		}
 	}
-	printf("계산 돌린 횟수 : % d", numbercount);
+	if (gcd == 1)
+	{
+		printf("최대공약수 %d", num1[arrcount1]);
+	}
+	
 
 
 
 
-
-
-
-
-
-
+	return 0;
 }
